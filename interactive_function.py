@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# THIS IS ADAM HERE
+# THIS IS FROM MY BRANCH
+# LOTR IS REALLY COOL
+
 # Import some things, maybe some more things
 
 import matplotlib.pyplot as plt
