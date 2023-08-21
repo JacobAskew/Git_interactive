@@ -49,19 +49,32 @@ def get_index(xdata=None, ydata=None, yerrdata=None, Plot=True, Filename=None):
     index_err = perr[0]
 
     if Plot:
-        plt.scatter(xdata, ydata)
-        plt.errorbar(xdata, ydata, yerr=yerrdata, fmt=' ', alpha=0.3)
-        plt.plot(xdata, powerlaw(xdata, *popt), 'r-',
-                 label=r'fit: $\alpha$=%5.3f, C=%5.3f' % tuple(popt))
-        plt.ylabel(r"Scintillation Bandwidth, $\Delta\nu_D$ (MHz)")
-        plt.xlabel("Observational Frequency (MHz)")
-        plt.legend()
-        if Filename:
-            plt.savefig(Filename+'.png')
-        plt.show()
-        plt.close()
-    
+        get_plot(xdata, ydata, yerrdata, Filename)
     return index, index_err
+
+
+def get_plot(xdata=None, ydata=None, yerrdata=None, Filename=None):
+    
+    popt, pcov = curve_fit(powerlaw, xdata, ydata)
+    
+    fig = plt.figure(figsize=(9, 9))
+    fig.subplots_adjust(hspace=0.5, wspace=0.5)
+    ax = fig.add_subplot(1, 1, 1)
+
+    ax.scatter(xdata, ydata, c='C0', alpha=0.8)
+    ax.errorbar(xdata, ydata, yerr=yerrdata, fmt=' ', alpha=0.1)
+    ax.plot(xdata, powerlaw(xdata, *popt), 'r-',
+             label=r'fit: $\alpha$=%5.3f, C=%5.3f' % tuple(popt))
+    ax.set_ylabel(r"Scintillation Bandwidth, $\Delta\nu_D$ (MHz)")
+    ax.set_xlabel("Observational Frequency (MHz)")
+    ax.legend()
+    if Filename:
+        ax.savefig(Filename+'.png')
+    ax.show()
+    ax.close()
+    
+    return "Plot go brrrrr"
+
 
 
 # Call the functions and print/save results
