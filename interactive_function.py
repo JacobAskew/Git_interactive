@@ -70,8 +70,8 @@ def get_plot(xdata=None, ydata=None, yerrdata=None, Filename=None):
     ax.legend()
     if Filename:
         ax.savefig(Filename+'.png')
-    ax.show()
-    ax.close()
+    plt.show()
+    plt.close()
     
     return "Plot go brrrrr"
 
