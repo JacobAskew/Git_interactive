@@ -23,6 +23,7 @@ data = np.asarray(data)
 
 def powerlaw(xdata, alpha, constant):
     '''
+    Hello this is a test comment :)
     xdata: data
     alpha: exponent
     constant: normalisation 
