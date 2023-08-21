@@ -53,9 +53,24 @@ def get_index(xdata=None, ydata=None, yerrdata=None, Plot=True, Filename=None):
     index_err = perr[0]
 
     if Plot:
-        get_plot(xdata, ydata, yerrdata, Filename)
+        plot_function(xdata, ydata, yerrdata, Filename)
     return index, index_err
 
+def plot_function(xdata, ydata, yerrdata, Filename):
+    '''
+    this is where you could add really cool documentation later
+    '''
+    plt.scatter(xdata, ydata)
+    plt.errorbar(xdata, ydata, yerr=yerrdata, fmt=' ', alpha=0.3)
+    plt.plot(xdata, powerlaw(xdata, *popt), 'r-',
+                label=r'fit: $\alpha$=%5.3f, C=%5.3f' % tuple(popt))
+    plt.ylabel(r"Scintillation Bandwidth, $\Delta\nu_D$ (MHz)")
+    plt.xlabel("Observational Frequency (MHz)")
+    plt.legend()
+    if Filename:
+        plt.savefig(Filename+'.png')
+    plt.show()
+    plt.close()
 
 def get_plot(xdata=None, ydata=None, yerrdata=None, Filename=None):
     
