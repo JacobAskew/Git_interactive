@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# THIS IS ADAM HERE
+
 # Import some things, maybe some more things
 
 import matplotlib.pyplot as plt
